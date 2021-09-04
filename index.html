@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Todo app</title>
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cleancss.css">
   <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,8 @@
 </head>
 
 <body>
+  <div class="modal modal--hidden" id="modal">
+  </div>
   <header class="header">
     <h1 class="main-title">Todo</h1>
     <button id="themeSwitcher" class="header__switcher" title="Switch theme"></button>
@@ -28,9 +30,8 @@
     </form>
 
     <div class="tasks">
-      <div class="tasks__body" id="tasks">
+      <div class="tasks__body" id="tasks"></div>
 
-      </div>
       <div class="tasks__footer">
         <label class="tasks__footer__text"><span id="itemsLeft">0</span> items left</label>
         <div class="filter" id="filter">

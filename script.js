@@ -66,7 +66,18 @@ const refreshLS = () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     else
         localStorage.removeItem('tasks');
+}
 
+const message = (text) => {
+    const $modal = document.getElementById('modal');
+    $modal.textContent = text;
+    $modal.classList.remove('modal--hidden');
+    setTimeout(() => $modal.classList.add('modal--hidden'), 2000)
+}
+
+const alphaNumericOnly = (e) => {
+    if (!/^[a-zA-Z0-9 ]*$/.test(e.key))
+        e.preventDefault();
 }
 
 /* events */
@@ -106,14 +117,22 @@ $tasks.addEventListener('click', removeTask);
 
 $form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if ($taskInput.value.trim().length > 0 &&
-        tasks.filter((E) => $taskInput.value.trim() === E).length === 0) {
+    const taskName = $taskInput.value.trim();
+    if (taskName.length > 3 && tasks.filter((E) => taskName === E.name).length === 0) {
         const task = newTask($taskInput.value.trim(), $formCheckbox.hasAttribute('checked'));
         tasks.unshift(task);
         renderTasks();
+    } else {
+        message((taskName.length <= 3) ?
+            `The task "${taskName.length}" needs to be bigger than ${taskName.length}` : `The task ${taskName} was already added`);
     }
     $taskInput.value = '';
 });
+
+$form.addEventListener('keyup', alphaNumericOnly);
+$form.addEventListener('keupress', alphaNumericOnly);
+$form.addEventListener('keydown', alphaNumericOnly);
+$form.addEventListener('paste', (e) => e.preventDefault());
 
 /* End task event */
 document.body.addEventListener('click', (e) => {

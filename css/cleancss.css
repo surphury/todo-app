@@ -76,6 +76,25 @@ input, button {
     background-color: inherit;
 }
 
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: var(--bg-colour);
+    transition: transform .5s;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 2rem;
+}
+
+.modal--hidden{
+    transform: scale(0);
+}
+
 .header {
     display: flex;
     justify-content: space-between;
