@@ -124,7 +124,7 @@ $form.addEventListener('submit', (e) => {
         renderTasks();
     } else {
         message((taskName.length <= 3) ?
-            `The task "${taskName.length}" needs to be bigger than ${taskName.length}` : `The task ${taskName} was already added`);
+            `The task "${taskName}" needs to be bigger than ${taskName.length}` : `The task ${taskName} was already added`);
     }
     $taskInput.value = '';
 });
